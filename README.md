@@ -1,4 +1,4 @@
-# 🎨 AI Hairstyle & Makeup Style Generator
+#  AI Hairstyle & Makeup Style Generator
 ### Controlled Image Generation with Stable Diffusion XL
 
 > **CS 5588 – Data Science Capstone | UMKC | Spring 2026**  
@@ -12,7 +12,7 @@
 
 ---
 
-## 📌 Overview
+##  Overview
 
 This project builds a **data-driven, controlled image generation pipeline** for a virtual beauty styling application. Given structured user attributes — hairstyle, hair color, makeup style, and occasion — the system generates realistic portrait images using **Stable Diffusion XL (SDXL)** and evaluates output quality via **CLIP cosine similarity scores**.
 
@@ -20,7 +20,7 @@ The core research question: _Does structured prompt engineering produce higher-q
 
 ---
 
-## 🗂 Repository Structure
+## Repository Structure
 
 ```
 .
@@ -38,7 +38,7 @@ The core research question: _Does structured prompt engineering produce higher-q
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Open in Google Colab
 Click the badge above or go to `File → Open Notebook → GitHub` and paste this repo URL.
@@ -53,11 +53,11 @@ pip install torch torchvision diffusers transformers accelerate \
 ### 3. Run All Cells
 The notebook is fully self-contained. Run top-to-bottom on a **T4 or A100 GPU** (free Colab tier works with T4).
 
-> ⚠️ **CPU Warning:** Image generation on CPU takes 10–30 min per image. Reduce `NUM_IMAGES` and `STEPS` for testing.
+>  **CPU Warning:** Image generation on CPU takes 10–30 min per image. Reduce `NUM_IMAGES` and `STEPS` for testing.
 
 ---
 
-## 🏗 System Architecture
+##  System Architecture
 
 ```
 Structured Input (BeautyAttributes)
@@ -75,7 +75,7 @@ Structured Input (BeautyAttributes)
 
 ---
 
-## 📐 Core Components
+## Core Components
 
 ### `BeautyAttributes` — Input Schema
 ```python
@@ -94,9 +94,9 @@ class BeautyAttributes:
 |--------|-------------|-------------------|
 | **Format** | Bag-of-words | Grammatically complete sentences |
 | **Context** | None | `"professional portrait photograph of one adult {gender}"` |
-| **Photography** | ❌ | ✅ `"85mm lens, shallow depth of field, soft diffused lighting"` |
-| **Quality tags** | ❌ | ✅ `"high detail, realistic, editorial beauty photography"` |
-| **Negative prompt** | ❌ | ✅ `"lowres, blurry, distorted eyes, extra fingers..."` |
+| **Photography** |  `"85mm lens, shallow depth of field, soft diffused lighting"` |
+| **Quality tags** |  `"high detail, realistic, editorial beauty photography"` |
+| **Negative prompt** |  `"lowres, blurry, distorted eyes, extra fingers..."` |
 
 **Example — Woman, Sleek Low Bun, Evening Gala:**
 
@@ -124,7 +124,7 @@ high detail, realistic, editorial beauty photography
 
 ---
 
-## 📊 Evaluation Results
+## Evaluation Results
 
 ### CLIP Cosine Similarity (ViT-B/32)
 
@@ -139,7 +139,7 @@ high detail, realistic, editorial beauty photography
 
 ---
 
-## 🎛 Supported Occasions (47)
+##  Supported Occasions (47)
 
 Organized by context:
 
@@ -155,20 +155,8 @@ Organized by context:
 
 ---
 
-## ⚠️ Failure Cases & Limitations
 
-| Issue | Severity | Description |
-|-------|----------|-------------|
-| Identity Inconsistency | 🔴 HIGH | Different seeds produce different people; no cross-run identity |
-| CLIP Score Paradox | 🟡 MED | Naive prompts score higher despite lower visual quality |
-| Style Leakage | 🟡 MED | Strong occasion keywords can override explicit attribute requests |
-| Anatomical Errors | 🟢 LOW | Occasional hand/hair artifacts despite negative prompts |
-| Demographic Bias | 🔴 HIGH | Model skews toward Western beauty norms for certain occasions |
-| No Face Reference | 🟡 MED | Cannot preserve a specific identity without ControlNet/IP-Adapter |
-
----
-
-## 🔮 Future Work
+## Future Work
 
 - **ControlNet** — Add face landmark conditioning for identity-preserving restyling
 - **IP-Adapter** — Use reference images to fix identity across all seed variations
@@ -179,7 +167,7 @@ Organized by context:
 
 ---
 
-## 📦 Datasets (Reference)
+## Datasets (Reference)
 
 | Dataset | Size | Usage |
 |---------|------|-------|
@@ -191,7 +179,7 @@ Organized by context:
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 ```
 Language:    Python 3.10+
@@ -202,15 +190,10 @@ Hardware:    CUDA GPU (Google Colab T4/A100)
 Viz:         Matplotlib + PIL
 ```
 
----
-
-## 📄 License
-
-MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 - [Stability AI](https://stability.ai/) for SDXL
 - [HuggingFace Diffusers](https://github.com/huggingface/diffusers)
